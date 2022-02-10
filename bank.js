@@ -27,13 +27,20 @@ function updateTotalbalance(Amount) {
 // DepositEvent
 document.getElementById('deposit-button').addEventListener('click', function() {
     const dipositAmount = getInputValue('deposit');
-    updateTotalField('total-deposit', dipositAmount);
-    updateTotalbalance(dipositAmount);
+    if (dipositAmount > 0 && isNaN(dipositAmount) == false) {
+        updateTotalField('total-deposit', dipositAmount);
+        updateTotalbalance(dipositAmount);
+    } else
+        alert("Please enter a positive number");
 })
 
 // WithdrawEvent 
 document.getElementById('withdraw-button').addEventListener('click', function() {
     const withdrawAmount = getInputValue('withdraw');
-    updateTotalField('total-withdraw', withdrawAmount);
-    updateTotalbalance((-1 * withdrawAmount));
+    if (withdrawAmount > 0 && isNaN(withdrawAmount) == false && (withdrawAmount < document.getElementById('total-balance').innerText)) {
+        updateTotalField('total-withdraw', withdrawAmount);
+        updateTotalbalance((-1 * withdrawAmount));
+    } else
+        alert("Please enter a positive number or your balance may be low");
+
 })
