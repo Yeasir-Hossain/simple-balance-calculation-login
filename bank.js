@@ -1,43 +1,39 @@
 // function
-function getInputValue() {
-    const di = document.getElementById('deposit');
-    const nda = di.value;
-    const ndaf = parseFloat(nda);
-    di.value = '';
-    return ndaf;
+// inputvalue
+function getInputValue(inputId) {
+    const inputField = document.getElementById(inputId);
+    const fieldtext = inputField.value;
+    const fieldvalue = parseFloat(fieldtext);
+    inputField.value = '';
+    return fieldvalue;
 }
 
+// updatevalue
+function updateTotalField(totalfield, Amount) {
+    const totalAmount = document.getElementById(totalfield);
+    const amountText = totalAmount.innerText;
+    const amountValue = parseFloat(amountText);
+    totalAmount.innerText = amountValue + Amount;
+}
+
+// update Total Balance
+function updateTotalbalance(Amount) {
+    const totalBalance = document.getElementById('total-balance');
+    const previuosTotal = totalBalance.innerText;
+    const newTotalBalance = parseFloat(previuosTotal) + Amount;
+    totalBalance.innerText = newTotalBalance;
+}
 
 // DepositEvent
 document.getElementById('deposit-button').addEventListener('click', function() {
-    const nda = getInputValue();
-    const dt = document.getElementById('total-deposit');
-    const pda = dt.innerText;
-    // update deposit 
-    const ndt = parseInt(pda) + parseInt(nda);
-    dt.innerText = ndt;
-
-    // update balance
-    const tb = document.getElementById('total-balance');
-    const ptb = tb.innerText;
-    const ntb = parseInt(ptb) + parseInt(nda);
-    tb.innerText = ntb;
+    const dipositAmount = getInputValue('deposit');
+    updateTotalField('total-deposit', dipositAmount);
+    updateTotalbalance(dipositAmount);
 })
 
 // WithdrawEvent 
 document.getElementById('withdraw-button').addEventListener('click', function() {
-    const wi = document.getElementById('withdraw');
-    const nwa = wi.value;
-    const wt = document.getElementById('total-withdraw');
-    const pwt = wt.innerText;
-    // update deposit 
-    const nwt = parseInt(nwa) + parseInt(pwt);
-    wt.innerText = nwt;
-    wi.value = '';
-    // update balance
-    const tb = document.getElementById('total-balance');
-    const ptb = tb.innerText;
-    const ntb = parseInt(ptb) - parseInt(nwa);
-    tb.innerText = ntb;
-
+    const withdrawAmount = getInputValue('withdraw');
+    updateTotalField('total-withdraw', withdrawAmount);
+    updateTotalbalance((-1 * withdrawAmount));
 })
