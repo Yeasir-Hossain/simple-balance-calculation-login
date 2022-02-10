@@ -20,14 +20,15 @@
             <h3 class="text-4xl text-center my-5">Login</h3>
 
             <div>
-                <input class="border border-gray-400 rounded block p-2 mx-auto w-3/4 mb-4" type="email" placeholder="Your email">
-                <input class="border border-gray-400 rounded block p-2 mx-auto w-3/4 mb-4" type="password" placeholder="Password">
+                <input id="email" class="border border-gray-400 rounded block p-2 mx-auto w-3/4 mb-4" type="email" placeholder="Your email">
+                <input id="pass" class="border border-gray-400 rounded block p-2 mx-auto w-3/4 mb-4" type="password" placeholder="Password">
                 <div class="mx-auto w-3/4">
-                    <button class="px-4 rounded bg-sky-500 mx-auto my-4 py-4 text-white font-medium">Submit</button>
+                    <button class="px-4 rounded bg-sky-500 hover:bg-sky-600 mx-auto my-4 py-4 text-white font-medium" id="submit-button">Submit</button>
                 </div>
             </div>
         </section>
     </main>
+    <script src="login.js"></script>
 </body>
 
 </html>
