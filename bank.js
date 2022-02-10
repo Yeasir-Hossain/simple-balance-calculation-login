@@ -11,16 +11,24 @@ document.getElementById('deposit-button').addEventListener('click', function() {
     // update balance
     const tb = document.getElementById('total-balance');
     const ptb = tb.innerText;
-    const ntb = parseInt(ptb) + ndt;
+    const ntb = parseInt(ptb) + parseInt(nda);
     tb.innerText = ntb;
 })
 
 // WithdrawEvent 
 document.getElementById('withdraw-button').addEventListener('click', function() {
     const wi = document.getElementById('withdraw');
-    const wa = wi.value;
+    const nwa = wi.value;
     const wt = document.getElementById('total-withdraw');
-    wt.innerText = wa;
+    const pwt = wt.innerText;
+    // update deposit 
+    const nwt = parseInt(nwa) + parseInt(pwt);
+    wt.innerText = nwt;
     wi.value = '';
+    // update balance
+    const tb = document.getElementById('total-balance');
+    const ptb = tb.innerText;
+    const ntb = parseInt(ptb) - parseInt(nwa);
+    tb.innerText = ntb;
 
 })
