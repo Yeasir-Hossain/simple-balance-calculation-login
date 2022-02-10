@@ -1,13 +1,22 @@
-// DepositEvent
-document.getElementById('deposit-button').addEventListener('click', function() {
+// function
+function getInputValue() {
     const di = document.getElementById('deposit');
     const nda = di.value;
+    const ndaf = parseFloat(nda);
+    di.value = '';
+    return ndaf;
+}
+
+
+// DepositEvent
+document.getElementById('deposit-button').addEventListener('click', function() {
+    const nda = getInputValue();
     const dt = document.getElementById('total-deposit');
     const pda = dt.innerText;
     // update deposit 
     const ndt = parseInt(pda) + parseInt(nda);
     dt.innerText = ndt;
-    di.value = '';
+
     // update balance
     const tb = document.getElementById('total-balance');
     const ptb = tb.innerText;
